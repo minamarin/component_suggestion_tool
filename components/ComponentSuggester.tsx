@@ -48,8 +48,12 @@ const ComponentSuggester = () => {
       style={{
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center', //  centers horizontally
+        justifyContent: 'center', // optional: centers vertically
+        // minHeight: '100vh',
         gap: '1rem',
         marginTop: '2rem',
+        textAlign: 'center',
       }}
     >
       <textarea
@@ -58,13 +62,12 @@ const ComponentSuggester = () => {
         onChange={(e) => setInput(e.target.value)}
         style={{ minHeight: '100px', padding: '0.5rem', fontSize: '1rem' }}
       />
-      
+
       <DefaultButton onClick={handleSuggest}>Suggest Components</DefaultButton>
 
       {suggestedComponents.length > 0 && (
         <div
           style={{
-            border: '1px solid gray',
             padding: '1rem',
             borderRadius: '8px',
           }}
@@ -77,7 +80,7 @@ const ComponentSuggester = () => {
                 <code>{component.codeSnippet}</code>
               </pre>
               <DefaultButton
-              //this is the copy button
+                //this is the copy button
                 onClick={() =>
                   handleCopy(component.codeSnippet, component.name)
                 }

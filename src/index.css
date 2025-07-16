@@ -37,8 +37,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -78,4 +76,74 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Blue button styling for Nova components */
+.button-primary,
+button[data-variant="primary"] {
+  background-color: #0050C0 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.button-primary:hover,
+button[data-variant="primary"]:hover {
+  background-color: #003d99 !important;
+  color: white !important;
+}
+
+/* Center the main content */
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Ensure text is centered */
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.max-w-3xl {
+  max-width: 48rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
