@@ -1,4 +1,4 @@
-import ComponentSuggester from '../components/ComponentSuggester'
+import ComponentSuggester from '../components/ComponentSuggester.tsx'
 
 function App() {
   return (
