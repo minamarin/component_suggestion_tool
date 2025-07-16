@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import componentsData from '../mockData/components.json';
+import { Button } from '@visa/nova-react';
+
 
 type ComponentType = {
     name: string; 
@@ -48,12 +50,12 @@ const ComponentSuggester = () =>{
         onChange={(e) => setInput(e.target.value)}
         style={{ minHeight: '100px', padding: '0.5rem', fontSize: '1rem' }}
       />
-      <button
+      <Button
         onClick={handleSuggest}
         style={{ padding: '0.75rem', fontSize: '1rem', cursor: 'pointer' }}
       >
         Suggest Components
-      </button>
+      </Button>
 
       {suggestedComponents.length > 0 && (
         <div style={{ border: '1px solid gray', padding: '1rem', borderRadius: '8px' }}>

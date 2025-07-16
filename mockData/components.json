@@ -1,24 +1,24 @@
 [
   { 
-    "name": "VdsTextField", 
+    "name": "TextField", 
     "description": "Text input field", 
     "keywords": ["text", "input", "email", "password"],
     "codeSnippet": "<vds-text-field label=\"Enter text\" placeholder=\"Type here\"></vds-text-field>"
   },
   { 
-    "name": "VdsButton", 
+    "name": "Button", 
     "description": "Button component", 
     "keywords": ["button", "submit", "click"],
     "codeSnippet": "<vds-button variant=\"primary\">Click Me</vds-button>"
   },
   { 
-    "name": "VdsCheckbox", 
+    "name": "Checkbox", 
     "description": "Checkbox component", 
     "keywords": ["checkbox", "remember", "check"],
     "codeSnippet": "<vds-checkbox label=\"I agree to terms\"></vds-checkbox>"
   },
   { 
-    "name": "VdsForm", 
+    "name": "Form", 
     "description": "Form wrapper component", 
     "keywords": ["form", "login", "signup", "register"],
     "codeSnippet": "<vds-form>\n  <!-- form fields go here -->\n</vds-form>"
