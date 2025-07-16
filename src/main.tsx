@@ -11,6 +11,5 @@ import '@visa/nova-styles/themes/visa-light/index.css';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-)
-
+  </React.StrictMode> 
+  ) 

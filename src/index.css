@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -11,6 +11,19 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+} */
+
+:root {
+  --theme-font-size: 14px;
+  --theme-focus-outline-size: 1px;
+  --theme-focus-outline-offset: var(--size-scalable-1);
+  --theme-border-size: 2px;
+  --theme-border-radius: 6px;
+  --theme-responsive-factor: 1;
+  --theme-scale-factor: 1;
+  --palette-default-active: #a158fe;
+  --palette-default-active-hover: #b77fff;
+  --palette-default-active-pressed: #7528d8;
 }
 
 a {
