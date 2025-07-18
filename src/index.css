@@ -46,6 +46,15 @@ a:hover {
   color: #535bf2;
 }
 
+a:focus {
+  outline: 3px solid #2563EB; /* vivid blue */
+  outline-offset: 2px;
+}
+
+:focus {
+  outline: 3px solid #2563EB; /* blue */
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

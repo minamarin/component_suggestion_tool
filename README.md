@@ -35,3 +35,25 @@ step 1 https://component-suggestion-tool.vercel.app/
 step 2 https://component-suggestion-tool-d9e4.vercel.app/
 step 3 
 step 4 
+
+## Example Prompts 
+TextField (keywords: text, input, email, password):
+-	“Login form with email and password inputs”
+-	“Simple contact form with text input for name and email”
+-	“Input field to enter email address with validation”
+-	“Password input field with show/hide option”
+-	Button (keywords: button, submit, click):
+-	“Submit button for a login form”
+-	“Primary action button for form submission”
+-	“Clickable button to add an item to cart”
+-	“Secondary button for cancel action”
+-	Checkbox (keywords: checkbox, remember, check):
+-	“Remember me checkbox below login form”
+-	“Terms and conditions agreement checkbox”
+-	“Newsletter subscription checkbox in signup form”
+-	“Multiple option checkbox list”
+-	Form (keywords: form, login, signup, register):
+-	“Complete signup form with email, password, and agreement checkbox”
+-	“Responsive login form with email, password and submit button”
+-	“Register form with first name, last name, and submit button”
+-	“Basic contact form with text inputs and a submit button”
