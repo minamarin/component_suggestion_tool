@@ -71,7 +71,7 @@ const ComponentSuggester = () => {
       await navigator.clipboard.writeText(snippet);
       //SET 'copied' state to 'name' (to indicate which snippet was copied)
       setCopied(name);
-      //AFTER 2 seconds, RESET 'copied' state back to null
+      //AFTER 2 seconds, RESET 'copied' state back to nullx
       setTimeout(() => setCopied(null), 2000);
     } catch (err) {
       console.error('Failed to copy!', err);
@@ -139,16 +139,6 @@ const ComponentSuggester = () => {
               >
                 <p style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Component Code Snippet:</p>
                 <code>{component.codeSnippet}</code>
-              </pre>
-              <div
-                style={{
-                  marginTop: '0.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
-                <p style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Copy: </p>
                 <VisaCopyLow
                   aria-label='Copy to clipboard'
                   style={{
@@ -160,6 +150,19 @@ const ComponentSuggester = () => {
                     handleCopy(component.codeSnippet, component.name)
                   }
                 />
+              </pre>
+              
+              <div
+                style={{
+                  marginTop: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                }}
+                
+              >
+                {/* <p style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Copy Code Snippet: </p> */}
+                
                 {copied === component.name && (
                   <span style={{ fontSize: '0.8rem', color: 'green' }}>
                     Copied!
