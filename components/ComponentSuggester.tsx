@@ -71,7 +71,7 @@ const ComponentSuggester = () => {
       await navigator.clipboard.writeText(snippet);
       //SET 'copied' state to 'name' (to indicate which snippet was copied)
       setCopied(name);
-      //AFTER 2 seconds, RESET 'copied' state back to null
+      //AFTER 2 seconds, RESET 'copied' state back to nullx
       setTimeout(() => setCopied(null), 2000);
     } catch (err) {
       console.error('Failed to copy!', err);

@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background: #f9f9f9; /* optional */
+}
+
+:root {
+  --theme-responsive-factor: 1.5; /* or custom scale factor */
+}
+
 @keyframes slide-in {
   from {
     transform: translateX(100%);
@@ -47,12 +61,12 @@ a:hover {
 }
 
 a:focus {
-  outline: 3px solid #2563EB; /* vivid blue */
+  outline: 3px solid #2563eb; /* vivid blue */
   outline-offset: 2px;
 }
 
 :focus {
-  outline: 3px solid #2563EB; /* blue */
+  outline: 3px solid #2563eb; /* blue */
 }
 
 h1 {
@@ -73,9 +87,7 @@ h1 {
 
 /* Layout utilities */
 #root {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  width: 100%;
   min-height: 100vh;
   padding: 2rem;
 }
@@ -93,7 +105,7 @@ h1 {
   align-items: center;
 }
 .max-w-3xl {
-  max-width: 48rem;
+  max-width: 100%;
 }
 .mx-auto {
   margin-left: auto;

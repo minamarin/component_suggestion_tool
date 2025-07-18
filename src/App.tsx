@@ -5,19 +5,37 @@ function App() {
   return (
     <div>
       {/* HEADER */}
-      <header className="fixed top-0 left-0 w-screen flex flex-col z-50">
-        {/* Blue Bar with fade on both ends */}
+      <header className='fixed top-0 left-0 w-screen flex flex-col z-50'>
+        {/* LOGO SECTION */}
         <div
-          className="w-screen animate-slide-in-right"
+          className='w-screen flex items-center justify-center py-2 p-5'
           style={{
-            height: '1.5rem',
-            background: 'linear-gradient(to right, transparent, #2563EB 20%, #2563EB 80%, transparent)',
+            // backgroundColor: '#ffffff',
+            backgroundColor: 'transparent',
+            padding: 20,
+          }}
+        >
+          <img
+            src='visa.png'
+            alt='Visa Logo'
+            className='block mx-auto'
+            style={{ height: '30px', objectFit: 'contain', }}
+          />
+        </div>
+
+        <div
+          className='mx-auto center animate-slide-in-right'
+          style={{
+            height: '1.2rem',
+            width: '1000px',
+            background:
+              'linear-gradient(to right, transparent, #2563EB 20%, #2563EB 80%, transparent)',
           }}
         ></div>
 
         {/* Spacer */}
         <div
-          className="w-screen"
+          className='w-screen'
           style={{
             height: '0.7rem',
           }}
@@ -25,17 +43,19 @@ function App() {
 
         {/* Yellow Bar with fade on both ends */}
         <div
-          className="w-screen animate-slide-in-left"
+          className='mx-auto center animate-slide-in-left'
           style={{
-            height: '1.5rem',
-            background: 'linear-gradient(to right, transparent, #facc15 20%, #facc15 80%, transparent)',
+            height: '1.2rem',
+            width: '1000px',
+            background:
+              'linear-gradient(to right, transparent, #facc15 20%, #facc15 80%, transparent)',
           }}
         ></div>
       </header>
 
       {/* MAIN CONTENT */}
-      <div className="mx-auto mt-28 p-4 flex flex-col items-center text-center min-h-screen">
-        <Typography variant="display-1">Visa Component Suggester</Typography>
+      <div className='mx-auto mt-28 p-4 flex flex-col items-center text-center min-h-screen'>
+        <Typography variant='display-1'> Component Suggester</Typography>
         <ComponentSuggester />
       </div>
 
