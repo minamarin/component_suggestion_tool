@@ -139,16 +139,6 @@ const ComponentSuggester = () => {
               >
                 <p style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Component Code Snippet:</p>
                 <code>{component.codeSnippet}</code>
-              </pre>
-              <div
-                style={{
-                  marginTop: '0.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}
-              >
-                <p style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Copy: </p>
                 <VisaCopyLow
                   aria-label='Copy to clipboard'
                   style={{
@@ -160,6 +150,19 @@ const ComponentSuggester = () => {
                     handleCopy(component.codeSnippet, component.name)
                   }
                 />
+              </pre>
+              
+              <div
+                style={{
+                  marginTop: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                }}
+                
+              >
+                {/* <p style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>Copy Code Snippet: </p> */}
+                
                 {copied === component.name && (
                   <span style={{ fontSize: '0.8rem', color: 'green' }}>
                     Copied!

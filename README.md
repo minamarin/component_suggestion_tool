@@ -31,4 +31,7 @@ All logic and coding decisions were self-directed, with AI used as a pair-progra
 
 ## Deployment
 Vercel Deployment Link
-https://component-suggestion-tool.vercel.app/
+step 1 https://component-suggestion-tool.vercel.app/
+step 2 https://component-suggestion-tool-d9e4.vercel.app/
+step 3 
+step 4 
