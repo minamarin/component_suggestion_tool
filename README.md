@@ -26,7 +26,7 @@ This project showcases agentic AI-powered developer workflows in an enterprise d
 - Nova design system theming
 
 ## Key Technical Decisions
-💠 Frontend Decisions
+## 💠 Frontend Decisions
 ### Component Scope Control:
 I made a conscious choice to scope the react-live component preview strictly to the @visa/nova-react library. This prevented runtime errors from undefined or unsafe components and ensured that live previews stayed accurate and secure within the Nova design system context.
 ### Live Preview Rendering Strategy:
@@ -39,7 +39,7 @@ To make the experience developer-friendly, I added:
 - Typewriter animations to rotate placeholder prompts, making the input field more interactive and less static.
 - Copy-to-clipboard functionality via the VisaCopyLow icon for instant code reuse.
 
-💠 Backend Decisions
+## 💠 Backend Decisions
 ### Backend-Orchestrated AI Calls:
 I chose to handle OpenAI API calls on the backend (Node.js Express) to protect sensitive API keys and to validate AI responses before exposing them to the frontend. This architecture also gave me flexibility for future enhancements like caching or request throttling.
 ### Mock Dataset Integration:
