@@ -42,13 +42,13 @@ Backend: Localhost (Node.js Express on port 4000)
 
 
 ## Example Prompts 
-TextField (keywords: text, input, email, password):
+### TextField (keywords: text, input, email, password):
 -	“Password input field with show/hide option” <- causes preview error on purpose in AI suggest mode
-Button (keywords: button, submit, click):
+### Button (keywords: button, submit, click):
 -	“Clickable button to add an item to cart” <- live preview available in AI suggest mode
-Checkbox (keywords: checkbox, remember, check):
+### Checkbox (keywords: checkbox, remember, check):
 -	“Remember me checkbox below login form” <- live preview available in AI suggest mode
-IF IN CASE OF ABNORMAL SITUATION (Edge Cases): 
+### IF IN CASE OF ABNORMAL SITUATION (Edge Cases): 
 - Text input over 500 words -> Alert: word count exceeded
 - Too many components -> scrollable 
 
