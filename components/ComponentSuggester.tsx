@@ -13,10 +13,10 @@ type ComponentType = {
 };
 
 // 🟡 Extract JSX code from OpenAI response
-const extractJSX = (aiText: string): string => {
-  const match = aiText.match(/```(?:jsx)?([\s\S]*?)```/);
-  return match ? match[1].trim() : '';
-};
+// const extractJSX = (aiText: string): string => {
+//   const match = aiText.match(/```(?:jsx)?([\s\S]*?)```/);
+//   return match ? match[1].trim() : '';
+// };
 
 // ✅ Typewriter placeholder phrases
 const phrases = [
@@ -39,9 +39,9 @@ const ComponentSuggester = () => {
   const [typedText, setTypedText] = useState('');
   const [charIndex, setCharIndex] = useState(0);
 
-  const [aiComponentName, setAiComponentName] = useState('');
-  const [aiComponentCode, setAiComponentCode] = useState('');
-  const [previewCode, setPreviewCode] = useState('');
+  // const [aiComponentName, setAiComponentName] = useState('');
+  // const [aiComponentCode, setAiComponentCode] = useState('');
+  // const [previewCode, setPreviewCode] = useState('');
 
   // ✅ Fetch components.json from backend
   useEffect(() => {
