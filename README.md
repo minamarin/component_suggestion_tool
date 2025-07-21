@@ -25,6 +25,28 @@ This project showcases agentic AI-powered developer workflows in an enterprise d
 - WCAG 2.1 AA accessible UI
 - Nova design system theming
 
+## Key Technical Decisions
+💠 Frontend Decisions
+- Component Scope Control:
+I made a conscious choice to scope the react-live component preview strictly to the @visa/nova-react library. This prevented runtime errors from undefined or unsafe components and ensured that live previews stayed accurate and secure within the Nova design system context.
+- Live Preview Rendering Strategy:
+For rendering AI-suggested JSX, I opted for react-live instead of dangerouslySetInnerHTML. This allowed me to safely execute and render actual React components in real-time, maintaining interactivity while avoiding XSS vulnerabilities and the limitations of raw HTML rendering.
+- Safe AI Code Injection:
+I enforced a structured JSON response format from OpenAI (with componentName and componentCode fields). This made it easier to parse, render, and debug AI outputs while minimizing hallucinations and formatting errors in the live preview.
+- User Experience Improvements:
+To make the experience developer-friendly, I added:
+- A clickable Visa logo that resets the entire session state and clears the suggestion history.
+- Typewriter animations to rotate placeholder prompts, making the input field more interactive and less static.
+- Copy-to-clipboard functionality via the VisaCopyLow icon for instant code reuse.
+
+💠 Backend Decisions
+- Backend-Orchestrated AI Calls:
+I chose to handle OpenAI API calls on the backend (Node.js Express) to protect sensitive API keys and to validate AI responses before exposing them to the frontend. This architecture also gave me flexibility for future enhancements like caching or request throttling.
+- Mock Dataset Integration:
+Given that the real Visa PDS components are behind internal access walls, I created a mock dataset (components.json) to replicate realistic component suggestions. This allowed me to demonstrate both keyword matching and AI-driven suggestions without scraping or unauthorized access.
+- Validation Strategy for AI Output:
+I designed the system to optionally validate AI-suggested components against my known mock dataset before rendering. While basic checks were implemented, I noted this as an area for future development, especially for enterprise use cases where hallucination prevention is critical.
+
 ## AI Usage
 AI was used strictly as a pair programming assistant:
 - Drafted architectural scaffolding and brainstorming flow logic	
