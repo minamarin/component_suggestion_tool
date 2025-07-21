@@ -1,61 +1,55 @@
 # Visa Component Suggestion Tool	
 
 ## Overview
-A simple React app that allows developers to describe a UI and receive relevant Visa Product Design System components (stubbed) and auto-generated code snippets.
+A full-stack web application that recommends Visa Product Design System (PDS) components based on developer prompts, leveraging both rule-based matching and OpenAI API integration for AI-powered suggestions.
+Disclaimer: The official Visa PDS components are not accessible via public APIs or scraping due to authentication restrictions. For demonstration purposes, this project utilizes a curated mock dataset representing common Visa components to simulate a production-like flow.
+
+This project showcases agentic AI-powered developer workflows in an enterprise design system context. It demonstrates practical full-stack reasoning, with an emphasis on clean code, controlled AI use, and clear separation of concerns between the frontend suggestion engine and backend AI orchestration.
 
 ## ⚙️ Tech Stack
 
 | Layer       | Tech |
 | ------------ | ---- |
-| Frontend     | React, TailwindCSS |
-| Backend      | Node.js, Express.js |
+| Frontend     | React, TailwindCSS, Typescript, Visa Nova Design System |
+| Backend      | Node.js, Express.js, OPENAI API |
 | Live Preview | Raw HTML rendering with `dangerouslySetInnerHTML` |
 
 ## Features
-- Free-form description input
-- Suggested Visa components with descriptions
-- Auto-generated code snippet area
-- Copy to clipboard
-- Nova theme customization
-- Accessible UI (WCAG 2.1 AA)
+✅ Free-form developer prompt input
+✅ Local keyword-based matching with mock dataset
+✅ AI-powered component suggestions with GPT-3.5 Turbo
+✅ Live JSX preview of AI-generated code (safe, scoped)
+✅ Component name + code snippet + live preview layout
+✅ Copy-to-clipboard via VisaCopyLow icon
+✅ Clickable Visa logo to reset session state
+✅ WCAG 2.1 AA accessible UI
+✅ Nova design system theming
 
 ## AI Usage
- I used ChatGPT to:
-- Draft basic architecture 
-- Refine filtering logic
-- Improve README structure
-All logic and coding decisions were self-directed, with AI used as a pair-programmer reference.
+AI was used strictly as a pair programming assistant:
+- Drafted architectural scaffolding and brainstorming flow logic	
+- Assisted with prompt engineering to improve suggestion quality.
+- Contributed to documentation and copywriting cleanup.
+
+Core decisions, architecture setup, data modeling, error handling, and UI composition were engineered manually, with AI offering guidance rather than driving implementation.
 
 ## Next Steps (If More Time):
-- create an API.
-- use AI. I didn't go for this and first option due to time constraints (3-4hrs only)
-- VSCode extension prototype
-- Favorite queries/snippet saving
+- Unit tests for backend routes with Jest/Supertest
 
 ## Deployment
-Vercel Deployment Link
-https://component-suggestion-tool-d9e4.vercel.app/
+Vercel Deployment Link (Frontend): 
+Backend: Localhost (Node.js Express on port 4000)
 
 
 ## Example Prompts 
 TextField (keywords: text, input, email, password):
--	“Input field to enter email address with validation”
--	“Password input field with show/hide option”
--	Button (keywords: button, submit, click):
--	“Submit button for a login form”
--	“Primary action button for form submission”
--	“Clickable button to add an item to cart”
--	“Secondary button for cancel action”
--	Checkbox (keywords: checkbox, remember, check):
--	“Remember me checkbox below login form”
--	“Terms and conditions agreement checkbox”
--	“Newsletter subscription checkbox in signup form”
--	“Multiple option checkbox list”
--	Form (keywords: form, login, signup, register):
--	“Complete signup form with email, password, and agreement checkbox”
--	“Responsive login form with email, password and submit button”
--	“Register form with first name, last name, and submit button”
--	“Basic contact form with text inputs and a submit button”
+-	“Password input field with show/hide option” <- causes preview error on purpose in AI suggest mode
+Button (keywords: button, submit, click):
+-	“Clickable button to add an item to cart” <- live preview available in AI suggest mode
+Checkbox (keywords: checkbox, remember, check):
+-	“Remember me checkbox below login form” <- live preview available in AI suggest mode
+IF IN CASE OF ABNORMAL SITUATION (Edge Cases): 
+- Text input over 500 words -> Alert: word count exceeded
+- Too many components -> scrollable 
 
 
-Note: The Visa Product Design System is not publicly accessible via web scraping and returns empty content in automated environments. Therefore, I created a mock dataset of representative components for this project to demonstrate the agentic suggestion flow.
