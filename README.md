@@ -59,8 +59,7 @@ Core decisions, architecture setup, data modeling, error handling, and UI compos
 - Unit tests for backend routes with Jest/Supertest
 
 ## Deployment
-Vercel Deployment Link (Frontend): 
-Backend: Localhost (Node.js Express on port 4000)
+Vercel Deployment Link (Full Stack -- Backend on Render): https://component-suggestion-uiux-n853.vercel.app/
 
 
 ## Example Prompts 
