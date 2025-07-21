@@ -45,9 +45,10 @@ const ComponentSuggester = () => {
 
   // ✅ Fetch components.json from backend
   useEffect(() => {
+    axios;
+    // .get('http://localhost:4000/api/components')
     axios
-      // .get('http://localhost:4000/api/components')
-      axios.get('https://visa-component-backend-1.onrender.com/api/components')
+      .get('https://visa-component-backend-1.onrender.com/api/components')
       .then((res) => setComponents(res.data))
       .catch((err) => console.error('Failed to fetch components:', err));
   }, []);
@@ -97,14 +98,16 @@ const ComponentSuggester = () => {
     ]);
   };
 
-
   const fetchAISuggestion = async () => {
     if (input.length > 500) {
       alert('word count exceeded');
       return;
     }
     try {
-      const res = await axios.post('https://visa-component-backend-1.onrender.com/api/suggest', { input });
+      const res = await axios.post(
+        'https://visa-component-backend-1.onrender.com/api/suggest',
+        { input }
+      );
       const { componentName, componentCode } = res.data;
       setAiComponentName(componentName);
       setAiComponentCode(componentCode);
@@ -173,7 +176,8 @@ const ComponentSuggester = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'stretch',
-          width: '600px',
+          width: '100%',
+          maxWidth: '600px',
           minHeight: '200px',
           maxHeight: '600px',
           background: 'rgba(255,255,255,0.7)',
@@ -295,9 +299,9 @@ const ComponentSuggester = () => {
             onChange={(e) => setInput(e.target.value)}
             style={{
               width: '100%',
-              minHeight: '100px',
-              padding: '1.2rem',
-              fontSize: '1.1rem',
+              minHeight: '80px',
+              padding: '1rem',
+              fontSize: '1rem',
               border: '2px solid #e5e7eb',
               borderRadius: '12px',
               outline: 'none',
@@ -318,9 +322,9 @@ const ComponentSuggester = () => {
               {input.length}/500
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-              <Button onClick={handleSuggest}>✨ Suggest Components</Button>
+              <Button onClick={handleSuggest}> Suggest Components</Button>
               <Button alternate onClick={fetchAISuggestion}>
-                💡 Suggest with AI
+                Suggest with AI
               </Button>
             </div>
           </div>
