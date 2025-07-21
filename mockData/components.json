@@ -1,0 +1,62 @@
+[
+  {
+    "name": "TextField",
+    "description": "Text input field",
+    "keywords": ["text", "input", "email", "password"],
+    "codeSnippet": "import { TextField } from '@visa/nova-react';\n<TextField label=\"Email\" placeholder=\"Enter your email\" />"
+  },
+  {
+    "name": "Button",
+    "description": "Button component for primary actions",
+    "keywords": ["button", "submit", "click", "primary"],
+    "codeSnippet": "<vds-button variant=\"primary\">Click Me</vds-button>"
+  },
+  {
+    "name": "Checkbox",
+    "description": "Checkbox for binary options",
+    "keywords": ["checkbox", "remember", "check", "agree"],
+    "codeSnippet": "<vds-checkbox label=\"I agree to the terms\"></vds-checkbox>"
+  },
+  {
+    "name": "Form",
+    "description": "Form wrapper for grouped fields",
+    "keywords": ["form", "login", "signup", "register"],
+    "codeSnippet": "<vds-form>\n  <!-- form fields -->\n</vds-form>"
+  },
+  {
+    "name": "Modal",
+    "description": "Modal dialog for user interactions",
+    "keywords": ["modal", "popup", "dialog", "overlay"],
+    "codeSnippet": "<vds-modal open>\n  <vds-modal-header>Title</vds-modal-header>\n  <vds-modal-body>Modal content here</vds-modal-body>\n</vds-modal>"
+  },
+  {
+    "name": "Tabs",
+    "description": "Tab component to switch between views",
+    "keywords": ["tabs", "navigation", "switch"],
+    "codeSnippet": "<vds-tabs>\n  <vds-tab label=\"Tab 1\" />\n  <vds-tab label=\"Tab 2\" />\n</vds-tabs>"
+  },
+  {
+    "name": "Accordion",
+    "description": "Collapsible content sections",
+    "keywords": ["accordion", "expand", "collapse", "dropdown"],
+    "codeSnippet": "<vds-accordion>\n  <vds-accordion-item label=\"Section 1\">Content 1</vds-accordion-item>\n</vds-accordion>"
+  },
+  {
+    "name": "Tooltip",
+    "description": "Tooltip for additional context",
+    "keywords": ["tooltip", "hover", "info"],
+    "codeSnippet": "<vds-tooltip content=\"Helpful info\">\n  <vds-button>Hover me</vds-button>\n</vds-tooltip>"
+  },
+  {
+    "name": "Pagination",
+    "description": "Pagination controls for navigation",
+    "keywords": ["pagination", "pages", "next", "previous"],
+    "codeSnippet": "<vds-pagination total-pages=\"5\" current-page=\"1\"></vds-pagination>"
+  },
+  {
+    "name": "Alert",
+    "description": "Alert messages for feedback",
+    "keywords": ["alert", "notification", "message", "error", "success"],
+    "codeSnippet": "<vds-alert variant=\"success\">Action completed successfully!</vds-alert>"
+  }
+]
