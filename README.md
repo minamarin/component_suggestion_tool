@@ -27,13 +27,13 @@ This project showcases agentic AI-powered developer workflows in an enterprise d
 
 ## Key Technical Decisions
 💠 Frontend Decisions
-- Component Scope Control:
+###Component Scope Control:
 I made a conscious choice to scope the react-live component preview strictly to the @visa/nova-react library. This prevented runtime errors from undefined or unsafe components and ensured that live previews stayed accurate and secure within the Nova design system context.
-- Live Preview Rendering Strategy:
+### Live Preview Rendering Strategy:
 For rendering AI-suggested JSX, I opted for react-live instead of dangerouslySetInnerHTML. This allowed me to safely execute and render actual React components in real-time, maintaining interactivity while avoiding XSS vulnerabilities and the limitations of raw HTML rendering.
-- Safe AI Code Injection:
+### Safe AI Code Injection:
 I enforced a structured JSON response format from OpenAI (with componentName and componentCode fields). This made it easier to parse, render, and debug AI outputs while minimizing hallucinations and formatting errors in the live preview.
-- User Experience Improvements:
+### User Experience Improvements:
 To make the experience developer-friendly, I added:
 - A clickable Visa logo that resets the entire session state and clears the suggestion history.
 - Typewriter animations to rotate placeholder prompts, making the input field more interactive and less static.
