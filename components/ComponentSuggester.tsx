@@ -39,14 +39,15 @@ const ComponentSuggester = () => {
   const [typedText, setTypedText] = useState('');
   const [charIndex, setCharIndex] = useState(0);
 
-  // const [aiComponentName, setAiComponentName] = useState('');
-  // const [aiComponentCode, setAiComponentCode] = useState('');
-  // const [previewCode, setPreviewCode] = useState('');
+  const [aiComponentName, setAiComponentName] = useState('');
+  const [aiComponentCode, setAiComponentCode] = useState('');
+  const [previewCode, setPreviewCode] = useState('');
 
   // ✅ Fetch components.json from backend
   useEffect(() => {
     axios
-      .get('http://localhost:4000/api/components')
+      // .get('http://localhost:4000/api/components')
+      axios.get('https://visa-component-backend-1.onrender.com/api/components')
       .then((res) => setComponents(res.data))
       .catch((err) => console.error('Failed to fetch components:', err));
   }, []);
@@ -96,20 +97,6 @@ const ComponentSuggester = () => {
     ]);
   };
 
-  // const fetchAISuggestion = async () => {
-  //   try {
-  //     const res = await axios.post('http://localhost:4000/api/suggest', { input });
-  //     const suggestion = res.data.suggestion;
-  //     setAiSuggestion(suggestion);
-
-  //     // Extract JSX for live preview
-  //     const jsxOnly = extractJSX(suggestion);
-  //     setPreviewCode(jsxOnly);
-
-  //   } catch (err) {
-  //     console.error('Failed to fetch AI suggestion:', err);
-  //   }
-  // };
 
   const fetchAISuggestion = async () => {
     if (input.length > 500) {
@@ -117,9 +104,7 @@ const ComponentSuggester = () => {
       return;
     }
     try {
-      const res = await axios.post('http://localhost:4000/api/suggest', {
-        input,
-      });
+      const res = await axios.post('https://visa-component-backend-1.onrender.com/api/suggest', { input });
       const { componentName, componentCode } = res.data;
       setAiComponentName(componentName);
       setAiComponentCode(componentCode);
