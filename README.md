@@ -12,18 +12,18 @@ This project showcases agentic AI-powered developer workflows in an enterprise d
 | ------------ | ---- |
 | Frontend     | React, TailwindCSS, Typescript, Visa Nova Design System |
 | Backend      | Node.js, Express.js, OPENAI API |
-| Live Preview | Raw HTML rendering with `dangerouslySetInnerHTML` |
+| Live Preview | Interactive JSX rendering via react-live using a scoped React environment (safe, component-aware), avoiding raw HTML injection |
 
 ## Features
-✅ Free-form developer prompt input
-✅ Local keyword-based matching with mock dataset
-✅ AI-powered component suggestions with GPT-3.5 Turbo
-✅ Live JSX preview of AI-generated code (safe, scoped)
-✅ Component name + code snippet + live preview layout
-✅ Copy-to-clipboard via VisaCopyLow icon
-✅ Clickable Visa logo to reset session state
-✅ WCAG 2.1 AA accessible UI
-✅ Nova design system theming
+- Free-form developer prompt input
+- Local keyword-based matching with mock dataset
+- AI-powered component suggestions with GPT-3.5 Turbo
+- Live JSX preview of AI-generated code (safe, scoped)
+- Component name + code snippet + live preview layout
+- Copy-to-clipboard via VisaCopyLow icon
+- Clickable Visa logo to reset session state
+- WCAG 2.1 AA accessible UI
+- Nova design system theming
 
 ## AI Usage
 AI was used strictly as a pair programming assistant:
