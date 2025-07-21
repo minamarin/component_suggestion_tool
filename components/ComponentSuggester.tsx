@@ -3,7 +3,7 @@ import { Button } from '@visa/nova-react';
 import { VisaCopyLow } from '@visa/nova-icons-react';
 import axios from 'axios';
 import ComponentPreview from './ComponentPreview';
-import ClickableMessageCard from './MessageComponent';
+import { ClickableMessageCard } from './MessageComponent';
 
 type ComponentType = {
   name: string;
@@ -28,9 +28,8 @@ const phrases = [
 
 const ComponentSuggester = () => {
   const [input, setInput] = useState('');
-  const [suggestedComponents, setSuggestedComponents] = useState<
-    ComponentType[]
-  >([]);
+  // Chronological chat history: each entry is { type: 'ai' | 'local', ...props }
+  const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [components, setComponents] = useState<ComponentType[]>([]);
   const [copied, setCopied] = useState<string | null>(null);
   // const [aiSuggestion, setAiSuggestion] = useState<string>('');
@@ -81,7 +80,20 @@ const ComponentSuggester = () => {
     const matches = components.filter((component) =>
       component.keywords.some((keyword) => lowerInput.includes(keyword))
     );
-    setSuggestedComponents(matches);
+    if (matches.length === 0) {
+      alert('no components found');
+      return;
+    }
+    // Add each local suggestion to chat history
+    setChatHistory((prev) => [
+      ...prev,
+      ...matches.map((component) => ({
+        type: 'local',
+        name: component.name,
+        description: component.description,
+        codeSnippet: component.codeSnippet,
+      })),
+    ]);
   };
 
   // const fetchAISuggestion = async () => {
@@ -112,6 +124,15 @@ const ComponentSuggester = () => {
       setAiComponentName(componentName);
       setAiComponentCode(componentCode);
       setPreviewCode(componentCode);
+      // Add AI suggestion to chat history
+      setChatHistory((prev) => [
+        ...prev,
+        {
+          type: 'ai',
+          name: componentName,
+          codeSnippet: componentCode,
+        },
+      ]);
     } catch (err) {
       console.error('AI Suggestion error:', err);
     }
@@ -161,158 +182,162 @@ const ComponentSuggester = () => {
         </div> */}
       </div>
 
-      {aiComponentName && aiComponentCode && (
-        <>
-          <h2
-            style={{ marginTop: '1rem', maxWidth: '700px', textAlign: 'left' }}
-          >
-            AI Suggested Components:
-          </h2>
-          <div
-            style={{
-              // marginTop: '1rem',
-              backgroundColor: '#ffef99',
-              padding: '1.5rem',
-              borderRadius: '12px',
-              maxWidth: '700px',
-              boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-              textAlign: 'left',
-            }}
-          >
-            <h4 style={{ fontWeight: 'bold' }}>Component Name:</h4>
-            <p>{aiComponentName}</p>
-
-            <h4 style={{ fontWeight: 'bold' }}>Code Snippet:</h4>
-            <pre
-              style={{
-                backgroundColor: '#e5e7eb',
-                padding: '1rem',
-                borderRadius: '8px',
-                overflowX: 'auto',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-              }}
-            >
-              <code style={{ flex: 1 }}>{aiComponentCode}</code>
-              <VisaCopyLow
-                aria-label='Copy to clipboard'
-                style={{
-                  cursor: 'pointer',
-                  width: '24px',
-                  height: '24px',
-                  flexShrink: 0,
-                }}
-                onClick={() => handleCopy(aiComponentCode, aiComponentName)}
-              />
-            </pre>
-            {copied === aiComponentName && (
-              <span style={{ fontSize: '0.8rem', color: 'green' }}>
-                Copied!
-              </span>
-            )}
-            <h4 style={{ fontWeight: 'bold' }}>Live Preview:</h4>
-            <ComponentPreview code={previewCode} />
-          </div>
-        </>
-      )}
-
-      {suggestedComponents.length > 0 && (
-        <div
-          style={{
-            marginTop: '2rem',
-            maxWidth: '700px',
-          }}
-        >
-          <h3>Suggested Components:</h3>
-          {suggestedComponents.map((component) => (
-            <div
-              key={component.name}
-              className='var(--palette-default-surface-highlight)'
-              style={{
-                marginBottom: '1.5rem',
-                marginTop: '1rem',
-                padding: '1rem',
-                borderRadius: '8px',
-                // backgroundColor: '#9ba6eeff',
-                backgroundColor: 'rgba(179, 215, 255, 0.35)',
-                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-              }}
-            >
-              <h4 style={{ fontWeight: 'bold' }}>{component.name}</h4>
-              <p>{component.description}</p>
-              <pre
-                style={{
-                  backgroundColor: '#f7f7f7ff',
-                  padding: '0.5rem',
-                  borderRadius: '4px',
-                  overflowX: 'auto',
-                  marginTop: '0.5rem',
-                }}
-              >
-                <code>{component.codeSnippet}</code>
-                <VisaCopyLow
-                  aria-label='Copy to clipboard'
-                  style={{
-                    marginLeft: '8px',
-                    cursor: 'pointer',
-                    width: '24px',
-                    height: '24px',
-                  }}
-                  onClick={() =>
-                    handleCopy(component.codeSnippet, component.name)
-                  }
-                />
-              </pre>
-              {copied === component.name && (
-                <span style={{ fontSize: '0.8rem', color: 'green' }}>
-                  Copied!
-                </span>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-      {/* TEXT INPUT AND BUTTONS*/}
+      {/* Chat box: suggestion cards above, textarea and buttons at the bottom */}
       <div
         style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'stretch',
+          width: '600px',
+          minHeight: '200px',
+          maxHeight: '600px',
+          background: 'rgba(255,255,255,0.7)',
+          borderRadius: '16px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+          padding: '2rem 1rem',
           position: 'relative',
+          margin: '0 auto',
         }}
       >
-        <textarea
-          placeholder={typedText}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          style={{
-            width: '600px',
-            minHeight: '120px',
-            padding: '1.5rem',
-            fontSize: '1.1rem',
-            border: '2px solid #e5e7eb',
-            borderRadius: '12px',
-            outline: 'none',
-            resize: 'vertical',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          }}
-        />
-        {/* Buttons */}
-
+        {/* Suggestion cards scrollable area */}
         <div
           style={{
-            // position: 'absolute',
+            flex: 1,
+            overflowY: 'auto',
             display: 'flex',
-            justifyContent: 'flex-end'
-
+            flexDirection: 'column',
+            gap: '1.5rem',
+            marginBottom: '1rem',
+            maxHeight: '350px',
           }}
         >
-          <div style={{ fontSize: '0.8rem', color: '#9ca3af' }}>
-            {input.length}/500
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-            <Button onClick={handleSuggest}>✨ Suggest Components</Button>
-            <Button alternate onClick={fetchAISuggestion}>
-              💡 Suggest with AI
-            </Button>
+          {/* Render chatHistory in order: oldest at top, newest at bottom */}
+          {chatHistory.map((entry, idx) =>
+            entry.type === 'ai' ? (
+              <ClickableMessageCard
+                key={`ai-${idx}-${entry.name}`}
+                headline={entry.name}
+                subtitle={'AI Suggested Component'}
+                description={
+                  <>
+                    <div>
+                      <strong>Code Snippet:</strong>
+                    </div>
+                    <pre
+                      style={{
+                        backgroundColor: '#e5e7eb',
+                        padding: '1rem',
+                        borderRadius: '8px',
+                        overflowX: 'auto',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                      }}
+                    >
+                      <code style={{ flex: 1 }}>{entry.codeSnippet}</code>
+                      <VisaCopyLow
+                        aria-label='Copy to clipboard'
+                        style={{
+                          cursor: 'pointer',
+                          width: '24px',
+                          height: '24px',
+                          flexShrink: 0,
+                        }}
+                        onClick={() =>
+                          handleCopy(entry.codeSnippet, entry.name)
+                        }
+                      />
+                    </pre>
+                    {copied === entry.name && (
+                      <span style={{ fontSize: '0.8rem', color: 'green' }}>
+                        Copied!
+                      </span>
+                    )}
+                    <div style={{ marginTop: '1rem' }}>
+                      <strong>Live Preview:</strong>
+                      <ComponentPreview code={entry.codeSnippet} />
+                    </div>
+                  </>
+                }
+              />
+            ) : (
+              <ClickableMessageCard
+                key={`local-${idx}-${entry.name}`}
+                headline={entry.name}
+                subtitle={'Suggested Component'}
+                description={
+                  <>
+                    <div>{entry.description}</div>
+                    <pre
+                      style={{
+                        backgroundColor: '#f7f7f7ff',
+                        padding: '0.5rem',
+                        borderRadius: '4px',
+                        overflowX: 'auto',
+                        marginTop: '0.5rem',
+                      }}
+                    >
+                      <code>{entry.codeSnippet}</code>
+                      <VisaCopyLow
+                        aria-label='Copy to clipboard'
+                        style={{
+                          marginLeft: '8px',
+                          cursor: 'pointer',
+                          width: '24px',
+                          height: '24px',
+                        }}
+                        onClick={() =>
+                          handleCopy(entry.codeSnippet, entry.name)
+                        }
+                      />
+                    </pre>
+                    {copied === entry.name && (
+                      <span style={{ fontSize: '0.8rem', color: 'green' }}>
+                        Copied!
+                      </span>
+                    )}
+                  </>
+                }
+              />
+            )
+          )}
+        </div>
+        {/* Textarea and buttons at the bottom */}
+        <div style={{ width: '100%' }}>
+          <textarea
+            placeholder={typedText}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            style={{
+              width: '100%',
+              minHeight: '100px',
+              padding: '1.2rem',
+              fontSize: '1.1rem',
+              border: '2px solid #e5e7eb',
+              borderRadius: '12px',
+              outline: 'none',
+              resize: 'vertical',
+              boxShadow: '0 2px 4px rgba(0, 0, 0, 0.07)',
+              marginBottom: '0.5rem',
+            }}
+          />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginTop: '0.5rem',
+            }}
+          >
+            <div style={{ fontSize: '0.8rem', color: '#9ca3af' }}>
+              {input.length}/500
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+              <Button onClick={handleSuggest}>✨ Suggest Components</Button>
+              <Button alternate onClick={fetchAISuggestion}>
+                💡 Suggest with AI
+              </Button>
+            </div>
           </div>
         </div>
       </div>

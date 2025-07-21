@@ -11,7 +11,7 @@ import {
 type ClickableMessageProp= {
   headline: string;
   subtitle: string;
-  description?: string;
+  description?: React.ReactNode;
 };
 
 export const ClickableMessageCard = ({

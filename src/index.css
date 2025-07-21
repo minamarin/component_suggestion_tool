@@ -9,7 +9,22 @@ body,
   padding: 0;
   width: 100vw;
   min-height: 100vh;
-  background: #f9f9f9; /* optional */
+  background: transparent !important;
+}
+
+/* Translucent pink-to-blue diagonal background effect */
+.background-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 128, 0.18) 0%,
+    rgba(0, 128, 255, 0.18) 100%
+  );
+  pointer-events: none;
 }
 
 .background-image {

@@ -73,5 +73,6 @@ Backend: Localhost (Node.js Express on port 4000)
 ### IF IN CASE OF ABNORMAL SITUATION (Edge Cases): 
 - Text input over 500 words → Alert: word count exceeded
 - Too many components →　scrollable 
+- If no components found →　Alert: no components found 
 
 
