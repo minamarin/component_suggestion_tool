@@ -1,6 +1,8 @@
 import ComponentSuggester from '../components/ComponentSuggester.tsx';
 import './App.css';
 import './responsive-textarea.css';
+import './App.css';
+import './responsive-textarea.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Typography } from '@visa/nova-react';
 import { Button } from '@visa/nova-react';

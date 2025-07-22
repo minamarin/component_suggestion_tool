@@ -62,7 +62,7 @@ Core decisions, architecture setup, data modeling, error handling, and UI compos
 - Containerize the backend with Docker and set up proper CI/CD workflows via GitHub Actions for deployments to Render or Railway.
 
 ## Deployment
-Vercel Deployment Link (Full Stack -- Backend on Render): https://component-suggestion-uiux-n853.vercel.app/
+Vercel Deployment Link (Full Stack -- Backend on Render): 
 OPENAI backend to connect with Frontend might take about 50seconds!
 
 
