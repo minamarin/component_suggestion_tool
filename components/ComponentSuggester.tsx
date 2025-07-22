@@ -144,12 +144,8 @@ const ComponentSuggester = () => {
         flexDirection: 'column',
         alignItems: 'center',
         gap: '1rem',
-        margin: 0,
-        padding: 0,
-        minHeight: '100vh',
-        width: '100vw',
+        marginTop: '2rem',
         textAlign: 'center',
-        boxSizing: 'border-box',
       }}
     >
       <div
@@ -181,16 +177,15 @@ const ComponentSuggester = () => {
           flexDirection: 'column',
           alignItems: 'stretch',
           width: '100%',
-          maxWidth: '1200px',
-          minHeight: '400px',
-          maxHeight: '100vh',
+          maxWidth: '600px',
+          minHeight: '200px',
+          maxHeight: '600px',
           background: 'rgba(255,255,255,0.7)',
           borderRadius: '16px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-          padding: '2rem 2vw',
+          padding: '2rem 1rem',
           position: 'relative',
           margin: '0 auto',
-          boxSizing: 'border-box',
         }}
       >
         {/* Suggestion cards scrollable area */}
@@ -315,10 +310,10 @@ const ComponentSuggester = () => {
             className='responsive-textarea'
             style={{
               width: '100%',
-              maxWidth: '1000px',
-              minHeight: '180px',
-              padding: '2rem',
-              fontSize: '1.15rem',
+              maxWidth: '900px',
+              minHeight: '100px',
+              padding: '1.5rem',
+              fontSize: '1.1rem',
               border: '2px solid #e5e7eb',
               borderRadius: '12px',
               outline: 'none',
