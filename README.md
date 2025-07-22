@@ -56,10 +56,14 @@ AI was used strictly as a pair programming assistant:
 Core decisions, architecture setup, data modeling, error handling, and UI composition were engineered manually, with AI offering guidance rather than driving implementation.
 
 ## Next Steps (If More Time):
-- Unit tests for backend routes with Jest/Supertest
+- Unit tests for backend routes with Jest/Supertest, ensuring stability and correctness in the OpenAI integration and component suggestion routes.
+- Implement stricter validation for AI suggestions by cross-checking AI responses with the mock dataset or Nova React component scope before live rendering.
+- Implement caching (e.g., with Redis or in-memory caching) for repeated AI prompt results to reduce API calls and improve response speed.
+- Containerize the backend with Docker and set up proper CI/CD workflows via GitHub Actions for deployments to Render or Railway.
 
 ## Deployment
 Vercel Deployment Link (Full Stack -- Backend on Render): https://component-suggestion-uiux-n853.vercel.app/
+OPENAI backend to connect with Frontend might take about 50seconds!
 
 
 ## Example Prompts 
